@@ -1,18 +1,64 @@
-const API="https://api.jikan.moe/v4"
+let page = 1;
+let loading = false;
+let currentMode = 'home';
+let lastParams = {};
 
-async function getTop(){ let r=await fetch(API+"/top/anime"); let j=await r.json(); return j.data; }
-async function randomAnime(){ let r=await fetch(API+"/random/anime"); let j=await r.json(); return j.data; }
-async function searchAnime(params){ 
-  let url=API+"/anime?";
-  if(params.q) url+="q="+encodeURIComponent(params.q)+"&";
-  if(params.type) url+="type="+params.type+"&";
-  if(params.status) url+="status="+params.status+"&";
-  if(params.year) url+="start_date="+params.year+"-01-01&end_date="+params.year+"-12-31&";
-  if(params.genres) url+="genres="+params.genres.join(",")+"&";
-  if(params.order_by) url+="order_by="+params.order_by+"&";
-  if(params.sort) url+="sort="+params.sort+"&";
-  if(params.page) url+="page="+params.page+"&";
-  let r=await fetch(url); let j=await r.json(); return j.data;
+async function showHome(){ currentMode='home'; page=1; lastParams={}; content.innerHTML=''; loadMoreHome(); }
+async function loadMoreHome(){
+  if(loading) return; loading=true;
+  const url = `https://api.jikan.moe/v4/top/anime?page=${page}`;
+  try{ const res=await fetch(url); const data=await res.json(); drawGrid(data.data,true); page++; }catch(e){console.error(e);}
+  loading=false;
 }
-async function getRecommendations(id){ let r=await fetch(API+"/anime/"+id+"/recommendations"); let j=await r.json(); return j.data; }
-async function getCharacters(id){ let r=await fetch(API+"/anime/"+id+"/characters"); let j=await r.json(); return j.data; }
+
+async function showRandom(){ currentMode='random'; page=1; content.innerHTML=''; let a=await randomAnime(); drawGrid([a]); }
+function showSearch(){
+  currentMode='search';
+  page=1;
+  content.innerHTML=`
+    <input id="q" placeholder="Поиск">
+    <input id="year" placeholder="Год">
+    <select id="type"><option value="">Тип</option><option value="tv">TV</option><option value="movie">Movie</option><option value="ova">OVA</option></select>
+    <select id="status"><option value="">Статус</option><option value="airing">Выходит</option><option value="complete">Завершено</option></select>
+    <button onclick="doSearch()">Найти</button>
+    <div id="results"></div>
+  `;
+}
+async function doSearch(){
+  let q=document.getElementById("q").value;
+  let year=document.getElementById("year").value;
+  let type=document.getElementById("type").value;
+  let status=document.getElementById("status").value;
+  lastParams={q,year,type,status};
+  page=1;
+  let data=await searchAnime({...lastParams,page});
+  drawGrid(data);
+}
+
+function showFavorites(){ currentMode='favorites'; drawGrid(getFavorites()); }
+
+async function showTrash(){ currentMode='trash'; page=1; content.innerHTML=''; loadMoreTrash(); }
+async function loadMoreTrash(){
+  if(loading) return; loading=true;
+  const url = `https://api.jikan.moe/v4/anime?max_score=6&page=${page}`;
+  try{ const res=await fetch(url); const data=await res.json(); if(data.data.length>0){ drawGrid(data.data,true); page++; } }catch(e){console.error(e);}
+  loading=false;
+}
+
+async function loadMoreSearch(){
+  if(loading) return; loading=true;
+  page++;
+  let data = await searchAnime({...lastParams,page});
+  drawGrid(data,true);
+  loading=false;
+}
+
+window.addEventListener('scroll', ()=>{
+  if(window.innerHeight + window.scrollY >= document.body.offsetHeight - 300){
+    if(currentMode==='home') loadMoreHome();
+    else if(currentMode==='trash') loadMoreTrash();
+    else if(currentMode==='search') loadMoreSearch();
+  }
+});
+
+showHome();
