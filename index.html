@@ -3,35 +3,31 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Anime Pastel</title>
+<title>Anime Netflix</title>
 
-<!-- TailwindCSS и Flowbite -->
 <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-<link href="https://unpkg.com/flowbite@1.7.0/dist/flowbite.min.css" rel="stylesheet">
-
 <link rel="stylesheet" href="style.css">
 </head>
 <body class="bg-gray-900 text-gray-100 font-sans">
 
 <div id="app" class="flex flex-col min-h-screen">
 
-<header class="p-4 text-center border-b border-gray-700">
-<h1 class="text-3xl font-bold text-pastel-green">Anime Pastel</h1>
+<header class="p-4 text-center border-b border-gray-800">
+<h1 class="text-3xl font-bold text-red-600">Anime Netflix</h1>
 </header>
 
 <main id="content" class="flex-1 p-2 overflow-auto"></main>
 
 </div>
 
-<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center h-16 border-t border-gray-700 bg-gray-800">
-<button onclick="showHome()" class="btn-nav" title="Главная"><i class="fa fa-home text-pastel-green"></i></button>
-<button onclick="showRandom()" class="btn-nav" title="Рандом"><i class="fa fa-dice text-pastel-green"></i></button>
-<button onclick="showSearch()" class="btn-nav" title="Поиск"><i class="fa fa-search text-pastel-green"></i></button>
-<button onclick="showFavorites()" class="btn-nav" title="Избранное"><i class="fa fa-heart text-pastel-green"></i></button>
-<button onclick="showTrash()" class="btn-nav" title="Треш"><i class="fa fa-poo text-pastel-green"></i></button>
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center h-16 border-t border-gray-800 bg-gray-900">
+<button onclick="showHome()" class="btn-nav" title="Главная">🏠</button>
+<button onclick="showRandom()" class="btn-nav" title="Рандом">🎲</button>
+<button onclick="showSearch()" class="btn-nav" title="Поиск">🔍</button>
+<button onclick="showFavorites()" class="btn-nav" title="Избранное">❤️</button>
+<button onclick="showTrash()" class="btn-nav" title="Треш">💩</button>
 </nav>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/js/all.min.js"></script>
 <script src="api.js"></script>
 <script src="favorites.js"></script>
 <script src="ui.js"></script>
