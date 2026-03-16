@@ -1,13 +1,54 @@
+:root {
+  --pastel-green: #7ed6df;
+}
+
 body { font-family: 'Poppins', sans-serif; }
-.btn-nav { background:none; border:none; color:#00ff88; font-size:24px; }
-.btn-nav:hover { transform: scale(1.2); transition:0.2s; }
-.card { background:#0b0b0b; border:1px solid #00ff88; border-radius:10px; cursor:pointer; transition:0.2s; overflow:hidden; }
-.card:hover { transform:scale(1.05); box-shadow:0 0 15px #00ff88; }
-.card img { width:100%; }
-.modal { position:fixed; top:0; left:0; width:100%; height:100%; background:#000d; display:flex; justify-content:center; align-items:flex-start; padding:20px; overflow:auto; z-index:200; }
-.modal-content { background:#000; border:2px solid #00ff88; border-radius:12px; padding:20px; max-width:700px; width:90%; max-height:90vh; overflow-y:auto; }
-.modal-content h2 { font-size:1.5rem; color:#00ff88; margin-bottom:10px; }
-.close { position:absolute; top:10px; right:10px; background:red; padding:5px 10px; border-radius:6px; cursor:pointer; color:white; }
-input, select, button { background:#000; border:1px solid #00ff88; border-radius:6px; color:#00ff88; padding:6px; margin:2px; }
-button:hover { transform:scale(1.05); }
-.grid { display:grid; grid-template-columns: repeat(auto-fill,minmax(180px,1fr)); gap:10px; }
+
+.btn-nav {
+  background: none;
+  border: none;
+  font-size: 24px;
+  padding: 4px;
+  transition: transform 0.2s;
+}
+.btn-nav:hover { transform: scale(1.2); }
+
+.card {
+  background: #1f1f1f;
+  border: 1px solid var(--pastel-green);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.3s;
+}
+.card:hover { 
+  transform: scale(1.05); 
+  box-shadow: 0 0 15px var(--pastel-green);
+}
+.card img { width:100%; border-radius:8px; }
+
+.modal {
+  position: fixed;
+  top:0; left:0; width:100%; height:100%;
+  background:#000b; display:flex; justify-content:center; align-items:flex-start;
+  padding:20px; overflow:auto; z-index:200;
+}
+.modal-content {
+  background:#111;
+  border:2px solid var(--pastel-green);
+  border-radius:12px;
+  padding:20px;
+  max-width:700px; width:90%; max-height:90vh; overflow-y:auto;
+}
+.modal-content h2 { font-size:1.5rem; color:var(--pastel-green); margin-bottom:10px; }
+.close {
+  position:absolute; top:10px; right:10px; background:red; padding:5px 10px; border-radius:6px;
+  cursor:pointer; color:white;
+}
+
+input, select, button {
+  background:#222; border:1px solid var(--pastel-green); border-radius:8px;
+  color:var(--pastel-green); padding:6px; margin:2px;
+}
+input:focus, select:focus { outline:none; border-color:#55efc4; }
+button:hover { transform: scale(1.05); }
+.grid { display:grid; grid-template-columns: repeat(auto-fill,minmax(180px,1fr)); gap:12px; margin-top:10px; }
