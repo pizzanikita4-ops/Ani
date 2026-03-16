@@ -1,44 +1,39 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anime Neon Pro</title>
 
-<title>Anime Neon</title>
-
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2/dist/tailwind.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 <link rel="stylesheet" href="style.css">
 
 </head>
+<body class="bg-black text-green-400">
 
-<body>
+<div id="app" class="flex flex-col min-h-screen">
 
-<div id="app">
-
-<header>
-<h1>Anime Neon</h1>
+<header class="p-4 text-center border-b border-green-500">
+<h1 class="text-3xl font-bold text-green-400">Anime Neon Pro</h1>
 </header>
 
-<main id="content"></main>
+<main id="content" class="flex-1 p-2 overflow-auto"></main>
 
 </div>
 
-<nav class="bottom-nav">
-
-<button onclick="showHome()">🏠</button>
-
-<button onclick="showRandom()">🎲</button>
-
-<button onclick="showSearch()">🔎</button>
-
-<button onclick="showFavorites()">❤️</button>
-
+<nav class="bottom-nav fixed bottom-0 left-0 w-full flex justify-around items-center h-16 border-t border-green-500 bg-black">
+<button onclick="showHome()" class="btn-nav"><i class="fa fa-home"></i></button>
+<button onclick="showRandom()" class="btn-nav"><i class="fa fa-dice"></i></button>
+<button onclick="showSearch()" class="btn-nav"><i class="fa fa-search"></i></button>
+<button onclick="showFavorites()" class="btn-nav"><i class="fa fa-heart"></i></button>
+<button onclick="showTrash()" class="btn-nav"><i class="fa fa-poo"></i></button>
 </nav>
 
 <script src="api.js"></script>
 <script src="favorites.js"></script>
 <script src="ui.js"></script>
 <script src="app.js"></script>
-
 </body>
 </html>
