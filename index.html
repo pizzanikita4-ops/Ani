@@ -3,34 +3,35 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Anime Neon Pro</title>
+<title>Anime Pastel</title>
 
-<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2/dist/tailwind.min.css" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+<!-- TailwindCSS и Flowbite -->
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+<link href="https://unpkg.com/flowbite@1.7.0/dist/flowbite.min.css" rel="stylesheet">
+
 <link rel="stylesheet" href="style.css">
-
 </head>
-<body class="bg-black text-green-400">
+<body class="bg-gray-900 text-gray-100 font-sans">
 
 <div id="app" class="flex flex-col min-h-screen">
 
-<header class="p-4 text-center border-b border-green-500">
-<h1 class="text-3xl font-bold text-green-400">Anime Neon Pro</h1>
+<header class="p-4 text-center border-b border-gray-700">
+<h1 class="text-3xl font-bold text-pastel-green">Anime Pastel</h1>
 </header>
 
 <main id="content" class="flex-1 p-2 overflow-auto"></main>
 
 </div>
 
-<nav class="bottom-nav fixed bottom-0 left-0 w-full flex justify-around items-center h-16 border-t border-green-500 bg-black">
-<button onclick="showHome()" class="btn-nav"><i class="fa fa-home"></i></button>
-<button onclick="showRandom()" class="btn-nav"><i class="fa fa-dice"></i></button>
-<button onclick="showSearch()" class="btn-nav"><i class="fa fa-search"></i></button>
-<button onclick="showFavorites()" class="btn-nav"><i class="fa fa-heart"></i></button>
-<button onclick="showTrash()" class="btn-nav"><i class="fa fa-poo"></i></button>
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center h-16 border-t border-gray-700 bg-gray-800">
+<button onclick="showHome()" class="btn-nav" title="Главная"><i class="fa fa-home text-pastel-green"></i></button>
+<button onclick="showRandom()" class="btn-nav" title="Рандом"><i class="fa fa-dice text-pastel-green"></i></button>
+<button onclick="showSearch()" class="btn-nav" title="Поиск"><i class="fa fa-search text-pastel-green"></i></button>
+<button onclick="showFavorites()" class="btn-nav" title="Избранное"><i class="fa fa-heart text-pastel-green"></i></button>
+<button onclick="showTrash()" class="btn-nav" title="Треш"><i class="fa fa-poo text-pastel-green"></i></button>
 </nav>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/js/all.min.js"></script>
 <script src="api.js"></script>
 <script src="favorites.js"></script>
 <script src="ui.js"></script>
